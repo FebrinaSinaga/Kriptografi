@@ -52,60 +52,42 @@ class VigenereCipher:
 
 
 # =========================
-# Kelas GUI Modern (PBO)
+# GUI FEMINIM — Pinky Girl Theme 💖
 # =========================
 class ModernCipherApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("🔐 Vigenère Cipher — Modern Light GUI")
+        self.root.title("💖 Vigenère Cipher — Pinky Girl Edition")
         self.root.geometry("830x670")
-        self.root.configure(bg="#FFFFFF")
+        self.root.configure(bg="#FFE4EC")  # pastel pink background
 
         self._setup_style()
         self._build_ui()
 
     def _setup_style(self):
         style = ttk.Style(self.root)
+        # gunakan tema clam, aman di semua OS
         style.theme_use("clam")
-        style.configure("TLabel", background="#FFFFFF", font=("Inter", 11))
-        style.configure("Title.TLabel", font=("Inter", 18, "bold"), foreground="#222222", background="#FFFFFF")
-        style.configure("Sub.TLabel", font=("Inter", 10), foreground="#555555", background="#FFFFFF")
-        style.configure("Card.TFrame", background="#FFFFFF", relief="flat")
 
-        self.title_font = ("Inter", 18, "bold")
+        # Warna utama pink lembut dan putih
+        style.configure("TLabel", background="#FFE4EC", font=("Inter", 11), foreground="#7A255D")
+        style.configure("Title.TLabel", font=("Poppins", 20, "bold"), foreground="#D63384", background="#FFE4EC")
+        style.configure("Sub.TLabel", font=("Inter", 10), foreground="#A34E75", background="#FFE4EC")
+        style.configure("Card.TFrame", background="#FFF0F5", relief="flat")
+
+        self.title_font = ("Poppins", 20, "bold")
         self.input_font = ("Inter", 12)
         self.mono_font = ("Courier New", 11)
         self.result_font = ("Inter", 14, "bold")
 
     def _build_ui(self):
-        # === Judul Tengah ===
-        title = ttk.Label(
-            self.root,
-            text="🔐  VIGENÈRE CIPHER",
-            font=("Inter", 22, "bold"),
-            foreground="#1E88E5",
-            background="#FFFFFF",
-            anchor="center"
-        )
-        title.place(relx=0.5, y=25, anchor="center")
+        # Judul di tengah
+        title_label = ttk.Label(self.root, text="💌 VIGENÈRE CIPHER 💌", style="Title.TLabel")
+        title_label.place(relx=0.5, y=25, anchor="center")
 
-        subtitle = ttk.Label(
-            self.root,
-            text="Enkripsi & Dekripsi — Prinsip PBO (OOP)",
-            font=("Inter", 10),
-            foreground="#555555",
-            background="#FFFFFF",
-            anchor="center"
-        )
-        subtitle.place(relx=0.5, y=60, anchor="center")
-
-        # Garis dekoratif di bawah judul
-        line = tk.Frame(self.root, bg="#D0D0D0", height=2, width=780)
-        line.place(relx=0.5, y=80, anchor="center")
-
-        # === Card Input ===
+        # Card Input
         input_card = ttk.Frame(self.root, style="Card.TFrame", padding=14)
-        input_card.place(x=28, y=100, width=770, height=160)
+        input_card.place(x=28, y=80, width=770, height=160)
 
         ttk.Label(input_card, text="Teks (plaintext/ciphertext):", font=self.input_font).place(x=10, y=8)
         self.entry_text = ttk.Entry(input_card, font=self.input_font, width=65)
@@ -115,55 +97,56 @@ class ModernCipherApp:
         self.entry_key = ttk.Entry(input_card, font=self.input_font, width=65)
         self.entry_key.place(x=10, y=100)
 
-        # Tombol aksi utama
+        # Tombol aksi utama — feminin pastel
         btn_frame = ttk.Frame(self.root, style="Card.TFrame")
-        btn_frame.place(x=28, y=275, width=770, height=65)
+        btn_frame.place(x=28, y=265, width=770, height=65)
 
-        self.btn_encrypt = tk.Button(btn_frame, text="🔒 Enkripsi", font=("Inter", 12, "bold"),
-                                     bg="#4C9AFF", fg="white", bd=0, activebackground="#3A7BE0",
+        self.btn_encrypt = tk.Button(btn_frame, text="💝 Enkripsi", font=("Inter", 12, "bold"),
+                                     bg="#FF9EC4", fg="white", bd=0, activebackground="#F178B6",
                                      cursor="hand2", command=self.on_encrypt)
         self.btn_encrypt.place(x=20, y=10, width=220, height=45)
 
-        self.btn_decrypt = tk.Button(btn_frame, text="🔓 Dekripsi", font=("Inter", 12, "bold"),
-                                     bg="#2ECC71", fg="white", bd=0, activebackground="#27AE60",
+        self.btn_decrypt = tk.Button(btn_frame, text="🌸 Dekripsi", font=("Inter", 12, "bold"),
+                                     bg="#FFB6C1", fg="white", bd=0, activebackground="#F497B6",
                                      cursor="hand2", command=self.on_decrypt)
         self.btn_decrypt.place(x=260, y=10, width=220, height=45)
 
-        self.btn_clear = tk.Button(btn_frame, text="🧹 Hapus", font=("Inter", 12, "bold"),
-                                   bg="#FF7675", fg="white", bd=0, activebackground="#E74C3C",
+        self.btn_clear = tk.Button(btn_frame, text="🧼 Bersihkan", font=("Inter", 12, "bold"),
+                                   bg="#F8A1C4", fg="white", bd=0, activebackground="#E47BA0",
                                    cursor="hand2", command=self.on_clear)
         self.btn_clear.place(x=500, y=10, width=120, height=45)
 
-        # Label hasil akhir dan tombol salin kecil di sampingnya
-        self.label_result_title = ttk.Label(self.root, text="Hasil Akhir:", font=self.result_font,
-                                            foreground="#1E88E5", background="#FFFFFF")
-        self.label_result_title.place(x=28, y=350)
+        # Hasil akhir
+        # Label hasil akhir dengan warna lebih kontras dan jarak sedikit lebih lebar
+        self.label_result_title = ttk.Label(self.root, text="✨ Hasil Akhir :", font=self.result_font,
+                                    foreground="#8E195E", background="#FFE4EC")
+        self.label_result_title.place(x=28, y=340)
 
-        self.label_result_text = ttk.Label(self.root, text="-", font=("Inter", 14),
-                                           background="#FFFFFF", foreground="#000000")
-        self.label_result_text.place(x=150, y=350)
+        self.label_result_text = ttk.Label(self.root, text="-", font=("Inter", 14, "bold"),
+                                   background="#FFE4EC", foreground="#3A003A")
+        self.label_result_text.place(x=180, y=340)  # digeser agar tidak menimpa label sebelumnya
 
+
+        # Tombol salin kecil
         self.btn_copy = tk.Button(self.root, text="📋 Salin", font=("Inter", 10),
-                                  bg="#E8EAF6", fg="#000000", bd=1, relief="ridge",
-                                  activebackground="#DDE1F1", cursor="hand2",
+                                  bg="#FDEEF4", fg="#C2185B", bd=1, relief="ridge",
+                                  activebackground="#FFD9E8", cursor="hand2",
                                   command=self.copy_result)
-        self.btn_copy.place(x=720, y=348, width=70, height=28)
+        self.btn_copy.place(x=720, y=338, width=70, height=28)
 
-        # === Card hasil detail ===
+        # Card hasil detail
         result_card = ttk.Frame(self.root, style="Card.TFrame", padding=12)
-        result_card.place(x=28, y=390, width=770, height=220)
+        result_card.place(x=28, y=380, width=770, height=220)
 
-        ttk.Label(result_card, text="=== DETAIL PROSES ===", style="Title.TLabel").place(x=10, y=4)
+        ttk.Label(result_card, text="💞 DETAIL PROSES 💞", style="Title.TLabel").place(x=10, y=4)
 
-        self.text_detail = tk.Text(result_card, bg="#F4F6F8", fg="#000000", font=self.mono_font,
+        self.text_detail = tk.Text(result_card, bg="#FFF7FA", fg="#6B214E", font=self.mono_font,
                                    wrap="word", bd=0)
         self.text_detail.place(x=10, y=34, width=745, height=170)
         self.text_detail.configure(state="disabled")
 
-        footer = ttk.Label(self.root,
-                           text="Dibuat oleh Febrina Yohana Sinaga — PBO Project",
-                           style="Sub.TLabel")
-        footer.place(x=28, y=640)
+        footer = ttk.Label(self.root, text="🌷 Dibuat oleh Febrina Yohana Sinaga — PBO Project 🌷", style="Sub.TLabel")
+        footer.place(relx=0.5, y=645, anchor="center")
 
     # =====================
     # Fungsi tombol
@@ -222,7 +205,7 @@ class ModernCipherApp:
         if result and result != "-":
             self.root.clipboard_clear()
             self.root.clipboard_append(result)
-            messagebox.showinfo("Salin", "Hasil berhasil disalin ke clipboard!")
+            messagebox.showinfo("Salin", "Hasil berhasil disalin ke clipboard! 💕")
         else:
             messagebox.showwarning("Salin", "Tidak ada hasil untuk disalin.")
 
